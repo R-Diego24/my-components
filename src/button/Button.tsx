@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './button.scss';
+import './Button.scss';
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'primary' | 'secondary' | 'ghost';
