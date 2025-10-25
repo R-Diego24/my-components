@@ -1,1 +1,17 @@
-node_modules
+# Node
+node_modules/
+pnpm-lock.yaml
+
+# Build
+dist/
+storybook-static/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Mac / OS
+.DS_Store
