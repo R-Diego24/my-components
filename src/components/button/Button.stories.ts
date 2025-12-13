@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { faRocket, faArrowRight, faSave, faCheck, faDownload } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "./Button";
 
 const meta: Meta<typeof Button> = {
@@ -21,7 +22,7 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
-  args: { variant: "secondary", size: "lg", children: "Primary Button" },
+  args: { variant: "primary", size: "md", children: "Primary Button" },
 };
 
 export const Secondary: Story = {
@@ -42,4 +43,20 @@ export const Large: Story = {
 
 export const Small: Story = {
   args: { size: "sm", children: "Small Button" },
+};
+
+export const WithLeftIcon: Story = {
+  args: { leftIcon: faRocket, children: "Launch" },
+};
+
+export const WithRightIcon: Story = {
+  args: { rightIcon: faArrowRight, children: "Next" },
+};
+
+export const WithBothIcons: Story = {
+  args: { leftIcon: faSave, rightIcon: faCheck, children: "Save" },
+};
+
+export const DownloadButton: Story = {
+  args: { variant: "secondary", leftIcon: faDownload, children: "Download" },
 };

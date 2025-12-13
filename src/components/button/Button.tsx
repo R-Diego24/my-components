@@ -1,9 +1,11 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import Icon from "../icon/Icon";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center font-semibold transition-all rounded-xl focus:outline-none disabled:opacity-50 disabled:pointer-events-none",
+  "inline-flex items-center justify-center gap-2 font-semibold transition-all rounded-xl focus:outline-none disabled:opacity-50 disabled:pointer-events-none",
   {
     variants: {
       variant: {
@@ -50,16 +52,23 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {}
+    VariantProps<typeof buttonVariants> {
+    leftIcon?: IconDefinition;
+    rightIcon?: IconDefinition;
+}
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, ...props }, ref) => {
+  ({ className, variant, size, leftIcon, rightIcon, children, ...props }, ref) => {
     return (
       <button
         ref={ref}
         className={cn(buttonVariants({ variant, size }), className)}
         {...props}
-      />
+      >
+        {leftIcon && <Icon icon={leftIcon} className="shrink-0" />}
+        {children}
+        {rightIcon && <Icon icon={rightIcon} className="shrink-0" />}
+      </button>
     );
   }
 );
