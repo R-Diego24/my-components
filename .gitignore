@@ -1,6 +1,5 @@
 # Node
 node_modules/
-pnpm-lock.yaml
 
 # Build
 dist/
@@ -14,4 +13,5 @@ storybook-static/
 *.log
 
 # Mac / OS
+echo ".DS_Store" >> .gitignore
 .DS_Store
