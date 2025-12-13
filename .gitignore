@@ -13,4 +13,5 @@ storybook-static/
 *.log
 
 # Mac / OS
+echo ".DS_Store" >> .gitignore
 .DS_Store
