@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import { Img } from "./Img";
-import { Card } from "../card/card";
+import { Card } from "../card/Card";
 import { FlexWrapper } from "../flex-wrapper/FlexWrapper";
 import { Title } from "../title/Title";
 import { Text } from "../text/Text";

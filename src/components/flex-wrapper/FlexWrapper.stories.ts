@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import { faArrowRight, faRocket } from "@fortawesome/free-solid-svg-icons";
 import { FlexWrapper } from "./FlexWrapper";
-import { Card } from "../card/card";
+import { Card } from "../card/Card";
 import { Title } from "../title/Title";
 import { Text } from "../text/Text";
 import { Button } from "../button/Button";

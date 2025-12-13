@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import React from "react";
 import { faArrowRight, faExternalLink, faCode, faRocket, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { Card } from "./card";
+import { Card } from "./Card";
 import { Title } from "../title/Title";
 import { Text } from "../text/Text";
 import { Button } from "../button/Button";
