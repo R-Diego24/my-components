@@ -10,6 +10,10 @@ const meta: Meta<typeof GridWrapper> = {
     component: GridWrapper,
     tags: ["autodocs"],
     argTypes: {
+        cols: {
+            control: { type: "select" },
+            options: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        },
         gap: {
             control: { type: "select" },
             options: ["none", "sm", "md", "lg", "xl"],
@@ -135,5 +139,50 @@ export const BlogLayout: Story = {
                     React.createElement(Text, { key: "sp", size: "sm", className: "text-slate-500" }, "More articles you might like..."),
                 ]),
             ]),
+        ]),
+};
+
+// Stories using the new cols prop
+export const TwoColumnGrid: Story = {
+    render: () =>
+        React.createElement(GridWrapper, { cols: 2, gap: "md", rowGap: "md" }, [
+            React.createElement("div", { key: "1", className: "bg-slate-100 border border-slate-300 rounded-lg p-4 text-center" }, "Item 1"),
+            React.createElement("div", { key: "2", className: "bg-slate-100 border border-slate-300 rounded-lg p-4 text-center" }, "Item 2"),
+            React.createElement("div", { key: "3", className: "bg-slate-100 border border-slate-300 rounded-lg p-4 text-center" }, "Item 3"),
+            React.createElement("div", { key: "4", className: "bg-slate-100 border border-slate-300 rounded-lg p-4 text-center" }, "Item 4"),
+        ]),
+};
+
+export const ThreeColumnGrid: Story = {
+    render: () =>
+        React.createElement(GridWrapper, { cols: 3, gap: "lg", rowGap: "lg" }, [
+            React.createElement("div", { key: "1", className: "bg-slate-100 border border-slate-300 rounded-lg p-4 text-center" }, "Item 1"),
+            React.createElement("div", { key: "2", className: "bg-slate-100 border border-slate-300 rounded-lg p-4 text-center" }, "Item 2"),
+            React.createElement("div", { key: "3", className: "bg-slate-100 border border-slate-300 rounded-lg p-4 text-center" }, "Item 3"),
+            React.createElement("div", { key: "4", className: "bg-slate-100 border border-slate-300 rounded-lg p-4 text-center" }, "Item 4"),
+            React.createElement("div", { key: "5", className: "bg-slate-100 border border-slate-300 rounded-lg p-4 text-center" }, "Item 5"),
+            React.createElement("div", { key: "6", className: "bg-slate-100 border border-slate-300 rounded-lg p-4 text-center" }, "Item 6"),
+        ]),
+};
+
+export const FourColumnGrid: Story = {
+    render: () =>
+        React.createElement(GridWrapper, { cols: 4, gap: "md", rowGap: "md" }, [
+            React.createElement(Card, { key: "1", variant: "ghost", padding: "sm" }, "Card 1"),
+            React.createElement(Card, { key: "2", variant: "ghost", padding: "sm" }, "Card 2"),
+            React.createElement(Card, { key: "3", variant: "ghost", padding: "sm" }, "Card 3"),
+            React.createElement(Card, { key: "4", variant: "ghost", padding: "sm" }, "Card 4"),
+        ]),
+};
+
+export const SixColumnGrid: Story = {
+    render: () =>
+        React.createElement(GridWrapper, { cols: 6, gap: "sm", rowGap: "sm" }, [
+            React.createElement("div", { key: "1", className: "bg-primary/20 border border-primary rounded p-2 text-center text-sm" }, "1"),
+            React.createElement("div", { key: "2", className: "bg-primary/20 border border-primary rounded p-2 text-center text-sm" }, "2"),
+            React.createElement("div", { key: "3", className: "bg-primary/20 border border-primary rounded p-2 text-center text-sm" }, "3"),
+            React.createElement("div", { key: "4", className: "bg-primary/20 border border-primary rounded p-2 text-center text-sm" }, "4"),
+            React.createElement("div", { key: "5", className: "bg-primary/20 border border-primary rounded p-2 text-center text-sm" }, "5"),
+            React.createElement("div", { key: "6", className: "bg-primary/20 border border-primary rounded p-2 text-center text-sm" }, "6"),
         ]),
 };

@@ -2,7 +2,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import Icon from "../icon/Icon";
+import { Icon } from "../icon/Icon";
 
 const linkVariants = cva(
     "inline-flex items-center gap-2 font-medium transition-colors focus:outline-none focus:underline",

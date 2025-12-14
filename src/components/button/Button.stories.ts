@@ -15,6 +15,12 @@ const meta: Meta<typeof Button> = {
       control: { type: "select" },
       options: ["sm", "md", "lg"],
     },
+    loading: {
+      control: { type: "boolean" },
+    },
+    disabled: {
+      control: { type: "boolean" },
+    },
   },
 };
 
@@ -59,4 +65,20 @@ export const WithBothIcons: Story = {
 
 export const DownloadButton: Story = {
   args: { variant: "secondary", leftIcon: faDownload, children: "Download" },
+};
+
+export const Loading: Story = {
+  args: { loading: true, children: "Submit" },
+};
+
+export const LoadingWithText: Story = {
+  args: { loading: true, loadingText: "Submitting...", children: "Submit" },
+};
+
+export const LoadingSecondary: Story = {
+  args: { variant: "secondary", loading: true, children: "Processing" },
+};
+
+export const Disabled: Story = {
+  args: { disabled: true, children: "Disabled Button" },
 };

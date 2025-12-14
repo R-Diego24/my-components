@@ -22,6 +22,8 @@ const titleVariants = cva(
     }
 );
 
+type TitleVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "subtitle";
+
 export interface TitleProps
     extends React.HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof titleVariants> {
@@ -30,13 +32,19 @@ export interface TitleProps
 
 export const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(
     ({ headingLevel, variant, className, ...props }, ref) => {
-        const safeVariant = variant || (headingLevel ? `h${headingLevel}` : "h1");
-        const HeadingTag = (headingLevel ? `h${headingLevel}` : (safeVariant === "subtitle" ? "p" : safeVariant)) as React.ElementType;
+        const resolvedVariant: TitleVariant = variant ?? (headingLevel ? `h${headingLevel}` as TitleVariant : "h1");
+        const HeadingTag = (
+            headingLevel 
+                ? `h${headingLevel}` 
+                : resolvedVariant === "subtitle" 
+                    ? "p" 
+                    : resolvedVariant
+        ) as React.ElementType;
 
         return (
             <HeadingTag
                 ref={ref}
-                className={cn(titleVariants({ variant: safeVariant as any }), className)}
+                className={cn(titleVariants({ variant: resolvedVariant }), className)}
                 {...props}
             />
         );
@@ -44,3 +52,5 @@ export const Title = React.forwardRef<HTMLHeadingElement, TitleProps>(
 );
 
 Title.displayName = "Title";
+
+export { titleVariants };

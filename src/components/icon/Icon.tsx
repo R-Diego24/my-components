@@ -30,7 +30,7 @@ export interface IconProps extends React.HTMLAttributes<HTMLElement> {
     ariaLabel?: string;
 }
 
-const Icon: React.FC<IconProps> = ({
+export const Icon: React.FC<IconProps> = ({
     icon,
     name,
     prefix = "fas",
@@ -81,5 +81,3 @@ const Icon: React.FC<IconProps> = ({
         <i className={classes} aria-label={ariaLabel} role={ariaLabel ? "img" : undefined} {...rest} />
     );
 };
-
-export default Icon;

@@ -36,8 +36,12 @@
     },
     "./styles.css": "./dist/styles.css"
   },
-  "files": ["dist"],
-  "sideEffects": ["./dist/styles.css"],
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "./dist/styles.css"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -51,7 +55,9 @@
     "build-storybook": "storybook build",
     "build:css": "tailwindcss -i ./src/index.css -o ./dist/styles.css --minify",
     "build:lib": "tsup && pnpm build:css",
-    "test": "vitest run",
+    "test": "vitest run --project unit",
+    "test:watch": "vitest --project unit",
+    "test:storybook": "vitest run --project storybook",
     "prepublishOnly": "pnpm test && pnpm build:lib"
   },
   "packageManager": "pnpm@10.19.0",
@@ -72,6 +78,7 @@
     "@storybook/react-vite": "^10.0.8",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^24.9.1",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
