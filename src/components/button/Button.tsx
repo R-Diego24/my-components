@@ -2,7 +2,8 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import Icon from "../icon/Icon";
+import { Icon } from "../icon/Icon";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 font-semibold transition-all rounded-xl focus:outline-none disabled:opacity-50 disabled:pointer-events-none",
@@ -10,17 +11,17 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-[#4ADE80] text-slate-900 shadow-md " +
-          "hover:bg-[#5FF08D] active:bg-[#3CCF6E] " +
+          "bg-primary text-slate-900 shadow-md " +
+          "hover:bg-primary-hover active:bg-primary-active " +
           "hover:-translate-y-[1px] active:translate-y-0 " +
-          "hover:shadow-[0_0_15px_rgba(74,222,128,0.45)] " +
+          "hover:shadow-neon-green " +
           "focus:ring-2 focus:ring-emerald-500",
 
         secondary:
-          "border border-[#38BDF8] text-[#38BDF8] shadow-none " +
-          "hover:bg-[#38BDF8]/10 hover:-translate-y-[1px] active:translate-y-0 " +
-          "hover:shadow-[0_0_15px_rgba(56,189,248,0.45)] " +
-          "focus:ring-2 focus:ring-[#38BDF8]",
+          "border border-secondary text-secondary shadow-none " +
+          "hover:bg-secondary-soft hover:-translate-y-[1px] active:translate-y-0 " +
+          "hover:shadow-neon-blue " +
+          "focus:ring-2 focus:ring-secondary",
 
         outline:
           "border border-slate-200 text-slate-700 bg-transparent " +
@@ -55,19 +56,31 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
     leftIcon?: IconDefinition;
     rightIcon?: IconDefinition;
+    loading?: boolean;
+    loadingText?: string;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, leftIcon, rightIcon, children, ...props }, ref) => {
+  ({ className, variant, size, leftIcon, rightIcon, loading, loadingText, children, disabled, ...props }, ref) => {
     return (
       <button
         ref={ref}
         className={cn(buttonVariants({ variant, size }), className)}
+        disabled={disabled || loading}
         {...props}
       >
-        {leftIcon && <Icon icon={leftIcon} className="shrink-0" />}
-        {children}
-        {rightIcon && <Icon icon={rightIcon} className="shrink-0" />}
+        {loading ? (
+          <>
+            <Icon icon={faSpinner} className="shrink-0 animate-spin" />
+            {loadingText ?? children}
+          </>
+        ) : (
+          <>
+            {leftIcon && <Icon icon={leftIcon} className="shrink-0" />}
+            {children}
+            {rightIcon && <Icon icon={rightIcon} className="shrink-0" />}
+          </>
+        )}
       </button>
     );
   }

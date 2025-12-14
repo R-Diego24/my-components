@@ -3,9 +3,23 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
 const gridWrapperVariants = cva(
-    "grid w-full grid-cols-12",
+    "grid w-full",
     {
         variants: {
+            cols: {
+                1: "grid-cols-1",
+                2: "grid-cols-2",
+                3: "grid-cols-3",
+                4: "grid-cols-4",
+                5: "grid-cols-5",
+                6: "grid-cols-6",
+                7: "grid-cols-7",
+                8: "grid-cols-8",
+                9: "grid-cols-9",
+                10: "grid-cols-10",
+                11: "grid-cols-11",
+                12: "grid-cols-12",
+            },
             gap: {
                 none: "gap-x-0",
                 sm: "gap-x-2",
@@ -22,6 +36,7 @@ const gridWrapperVariants = cva(
             },
         },
         defaultVariants: {
+            cols: 12,
             gap: "md",
             rowGap: "md",
         },
@@ -33,11 +48,11 @@ export interface GridWrapperProps
     VariantProps<typeof gridWrapperVariants> {}
 
 export const GridWrapper = React.forwardRef<HTMLDivElement, GridWrapperProps>(
-    ({ className, gap, rowGap, children, ...props }, ref) => {
+    ({ className, cols, gap, rowGap, children, ...props }, ref) => {
         return (
             <div
                 ref={ref}
-                className={cn(gridWrapperVariants({ gap, rowGap }), className)}
+                className={cn(gridWrapperVariants({ cols, gap, rowGap }), className)}
                 {...props}
             >
                 {children}
