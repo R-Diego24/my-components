@@ -6,7 +6,7 @@ import { Card } from "../card/Card";
 import { Title } from "../title/Title";
 import { Text } from "../text/Text";
 import { Button } from "../button/Button";
-import Icon from "../icon/Icon";
+import { Icon } from "../icon/Icon";
 
 const meta: Meta<typeof FlexWrapper> = {
     title: "Layout/FlexWrapper",

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { faUser, faHeart, faRocket, faSpinner, faStar, faCheck, faCog } from "@fortawesome/free-solid-svg-icons";
-import Icon from "./Icon";
+import { Icon } from "./Icon";
 
 const meta: Meta<typeof Icon> = {
     title: "UI/Icon",
